@@ -1,0 +1,55 @@
+## macOS
+.DS_Store
+
+## Unity generated
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/UserSettings/
+/MemoryCaptures/
+
+# Visual Studio / Rider
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.mdb
+.vscode/
+.vs/
+
+# OS files
+Thumbs.db
+
+# PlantUML jar (local download)
+plantuml.jar
+# Unity
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+
+# IDE
+.vs/
+.idea/
+*.csproj
+*.sln
+*.user
+*.userprefs
+
+# OS
+.DS_Store
+Thumbs.db
