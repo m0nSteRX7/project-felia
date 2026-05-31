@@ -1,0 +1,31 @@
+@startuml
+start
+:Показва се Launcher сцената;
+if (Потребителят избира действие?) then (Отвори проект)
+  :Въвежда път / избира папка;
+elseif (Създай проект)
+  :Въвежда име и родителска папка;
+else (Restore Last)
+  :Зарежда последния проект;
+endif
+
+if (Пътят валиден ли е?) then (Да)
+  :Зарежда се DesktopEditor сцената;
+  :Показва се GUI на редактора;
+  while (Редакторът е активен?) is (Да)
+    if (Open menu?) then (Да)
+      :Показва се hierarchy, tool bar и options панел;
+    else (Не)
+      :Скрива се workspace менюто;
+    endif
+    :Потребителят избира обект и го редактира;
+    if (Main Menu?) then (Да)
+      break
+    endif
+  endwhile (Не)
+else (Не)
+  :Връща се към Launcher;
+endif
+
+stop
+@enduml

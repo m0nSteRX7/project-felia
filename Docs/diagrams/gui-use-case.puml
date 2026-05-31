@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+
+actor Потребител
+
+rectangle "GUI на Project Felia" {
+  usecase "Отвори проект" as UC1
+  usecase "Създай проект" as UC2
+  usecase "Restore Last" as UC3
+  usecase "Open/Close Menu" as UC4
+  usecase "Прегледай recent проекти" as UC5
+  usecase "Избери обект" as UC6
+  usecase "Премести/Завърти/Оразмери" as UC7
+  usecase "Frame Selected" as UC8
+  usecase "Reset View" as UC9
+  usecase "Main Menu" as UC10
+  usecase "Промени мащаба на менюто" as UC11
+}
+
+Потребител --> UC1
+Потребител --> UC2
+Потребител --> UC3
+Потребител --> UC4
+Потребител --> UC5
+Потребител --> UC6
+Потребител --> UC7
+Потребител --> UC8
+Потребител --> UC9
+Потребител --> UC10
+Потребител --> UC11
+
+UC1 ..> UC5 : <<include>>
+UC2 ..> UC5 : <<include>>
+UC3 ..> UC5 : <<include>>
+@enduml

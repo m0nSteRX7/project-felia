@@ -1,0 +1,64 @@
+@startuml
+class DesktopLauncherBootstrap {
+  - Rect launcherRect
+  - Rect createRect
+  - bool hasOpenedWorkspace
+  - AsyncOperation pendingSceneLoadOperation
+  + OnGUI()
+  + TryOpenWorkspace(pathToOpen)
+  + TryCreateWorkspace()
+  + BeginSceneLoad(sceneName)
+  + OnSceneActivationCompleted()
+}
+
+class DesktopStandaloneEditorBootstrap {
+  - XREditorState state
+  - XREditorInputRouter inputRouter
+  - XREditorSelectionService selectionService
+  - XREditorManipulator manipulator
+  + Awake()
+  + Update()
+}
+
+class DesktopHierarchyPanel {
+  - XREditorState editorState
+  - bool showWorkspaceMenu
+  + Bind(state, editorCameraController)
+  + OnGUI()
+  + DrawToolbar()
+  + DrawHierarchy()
+}
+
+class DesktopAppSettings {
+  + Load()
+  + Save()
+  + SetMenuScale(menuScale)
+  + ResetToDefaults()
+}
+
+class ProjectWorkspaceService {
+  + CurrentWorkspace
+  + RequestMainMenu()
+  + ConsumeMainMenuRequest()
+}
+
+class DesktopGuiUtility {
+  + GetAdaptiveScale(menuScale, referenceWidth, referenceHeight)
+  + PushScale(scale)
+  + PopScale(matrix)
+}
+
+class SceneActivationHelper {
+  + Ensure()
+  + BeginDeferredActivation(op, sceneName)
+}
+
+DesktopLauncherBootstrap --> DesktopAppSettings
+DesktopLauncherBootstrap --> ProjectWorkspaceService
+DesktopLauncherBootstrap --> SceneActivationHelper
+DesktopStandaloneEditorBootstrap --> ProjectWorkspaceService
+DesktopStandaloneEditorBootstrap --> DesktopHierarchyPanel
+DesktopHierarchyPanel --> DesktopAppSettings
+DesktopHierarchyPanel --> DesktopGuiUtility
+DesktopHierarchyPanel --> ProjectWorkspaceService
+@enduml

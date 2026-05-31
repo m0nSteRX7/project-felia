@@ -1,0 +1,17 @@
+@startuml
+actor User
+participant Launcher as "DesktopLauncherBootstrap"
+participant Helper as "SceneActivationHelper"
+participant Workspace as "ProjectWorkspaceService"
+participant Editor as "DesktopStandaloneEditorBootstrap"
+
+User -> Launcher: Select project / Create project
+Launcher -> Workspace: Validate path / create project
+Workspace --> Launcher: Valid
+Launcher -> Helper: BeginDeferredActivation(asyncOp, "DesktopEditor")
+Helper -> Launcher: monitor progress
+Helper -> Editor: allowSceneActivation (when ready)
+Editor -> Workspace: Initialize editor state
+Editor --> User: Editor UI shown
+
+@enduml
